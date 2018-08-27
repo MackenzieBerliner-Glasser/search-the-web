@@ -3,10 +3,10 @@
     <h2>Pokemon Colors</h2>
     <div>
       <ColorSearch :onSearch="handleSearch"/>
-      <ul v-if="colors">
-        <Pokemon v-for="color in colors"
-          :key="color.id"
-          :color="color"/>
+      <ul v-if="allPokemon">
+        <Pokemon v-for="name in allPokemon"
+          :key="name.id"
+          :name="name"/>
       </ul>
     </div>
   </section>
@@ -20,7 +20,7 @@ import ColorSearch from './ColorSearch';
 export default {
   data() {
     return {
-      colors: null,
+      allPokemon: null,
       search: '',
       total: 0
     };
@@ -32,12 +32,13 @@ export default {
   methods: {
     handleSearch(search) {
       this.search = search;
-      this.searchColor();
+      this.searchPokemon();
     },
-    searchColor() {
-      api.getColors(this.search)
+    searchPokemon() {
+      api.getAllPokemon(this.search)
         .then(response => {
-          this.colors = response.results;
+          console.log('did you make it', response);
+          this.allPokemon = response.pokemon_species;
           this.total = response.count;
         });
     }

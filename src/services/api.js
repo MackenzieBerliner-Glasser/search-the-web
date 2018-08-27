@@ -6,7 +6,7 @@ export default {
   // 1) Web Request is made to server
   // 2) _when_ browser gets response, _then_ call the callback
   // 3) The return value of that _then_ callback is passed to the next then (outside this function)
-  getColors(searchTerm = '') {
+  getAllPokemon(searchTerm = '') {
       
     // url:
     // 1) protocol (https://)
@@ -18,7 +18,7 @@ export default {
     //    - use "encodeURIComponent" to escape search values:
     //    ?APIKEY=abc123&search=${encodeURIComponent(name)}
           
-    return fetch(`http://pokeapi.co/api/v2/pokemon-color/${encodeURIComponent(searchTerm)}`)
+    return fetch(`https://pokeapi.co/api/v2/pokemon-color/${encodeURIComponent(searchTerm)}`)
     /* deserialize the data to real JavaScript object! */
       .then(response => response.json());
   }
