@@ -1,13 +1,13 @@
 <template>
     <li>
-        {{ }} color {{  }}
+        {{pokemon.name}}
     </li>
 </template>
 
 <script>
 export default {
   props: {
-    name: Object
+    pokemon: Object
   }
 };
 </script>
